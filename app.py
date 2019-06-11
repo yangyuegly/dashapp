@@ -16,31 +16,64 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 #traces for the stack bar
 
-
-trace1 = go.Bar(
+traces ={}
+for news in fake_news_accounts:
+    traces[news+str(1)] = go.Bar(
         x=datelist,
-        y=counters['NewOrleansON'],
+        y=counters[news][0],
         name='with URLs'
     )
-trace2 = go.Bar(
+    traces[news+str(2)] = go.Bar(
         x=datelist,
-        y=counters['NewOrleansON'],
+        y=counters[news][1],
         name='without URLs'
     )
 
+#html and graph components
 
-app.layout = html.Div(children=[
-    html.H1(children='Hello Dash'),
+app.layout = html.Div([
+    html.H1('Fake Twitter Username'),
 
     html.Div(children='''
-        Dash: A web application framework for Python.
+        Select a fake twitter account to view the number of tweets that contains urls vs the number of ones that don't
     '''),
+    html.Div(
+    [
+            dcc.Dropdown(
+                id="AccountNames",
+                options=[{
+                    'label': i,
+                    'value': i
+                } for i in fake_news_accounts],
+                value='NewOrleansON'),
+    ],
+    style={'width': '25%',
+               'display': 'inline-block'}),
+    
 
     dcc.Graph(id='bar_plot',
-              figure=go.Figure(data=[trace1, trace2],
+              figure=go.Figure(data=[traces['NewOrleansON1'], traces['NewOrleansON2']],
                                layout=go.Layout(barmode='stack'))
+    
     )
 ])
+
+
+#updating 
+@app.callback(
+    dash.dependencies.Output('bar_plot', 'figure'),
+    [dash.dependencies.Input('AccountNames', 'value')])
+def update_output(value):
+    return {
+            #dcc.Graph(id='bar_plot',
+            'data':[traces[value+str(1)], traces[value+str(1)]],
+            'layout':
+                go.Layout(barmode='stack')
+
+        #)    
+    }
+        
+    
 
 if __name__ == '__main__':
     app.run_server(debug=True)
