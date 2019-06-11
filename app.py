@@ -1,16 +1,51 @@
 # -*- coding: utf-8 -*-
 import dash
+import pandas as pd
+import json
+import flask
 import dash_core_components as dcc
 import dash_html_components as html
 import plotly.graph_objs as go
+from flask import render_template
 #from bar_chart.py import datelist,counterNoFURLs, counterFURLs
 #from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
 from url_count import fake_news_accounts, counters, datelist
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+#app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 #trying to get newsName from the destination url 
+app = flask.Flask(__name__)
+
+#get start and end dates
+start, end = {},{}
+with open('start_end.json','r') as json_file:
+        news_dates= (json.load(json_file))
+print(news_dates[0])
+for i in range(len(news_dates)):
+    start[news_dates[i]['AccountName']] = news_dates[i]['Start']
+    end[news_dates[i]['AccountName']] = news_dates[i]['End']
+
+print(start, end)
+@app.route('/home')
+def homepage():
+    title = "IRA Twitter Research"
+    return render_template("account.html", title = title)
+
+
+@app.route('/<some_fake_account>')
+def account_page(some_fake_account):
+    return render_template("account.html", title = some_fake_account, start_date = start[some_fake_account], end_date = end[some_fake_account])
+
+#corresponding account information 
+
+
+
+app = dash.Dash(
+    __name__,
+    server=app,
+    routes_pathname_prefix='/dash/'
+)
 
 
 
