@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <html>
 <h1>{{ title }}</h1>
+<script>
+</script>
 <body>
 <!--iframe src="http://localhost:8050" width=1000 height=600-->
 <p>This twitter account was active from {{ start_date }} to {{ end_date }}</p>
-<ul></ul>
+<p>Top urls mentioned in the tweets of {{ title }} and the frequency with which they appear
+    <ul>
+       {% for url in urls %}
+            <li>{{ url[0] }} showed {{ url[1] }} times</li>
+        {% endfor %}
+    </ul>
+</p>
 </body>
 </html>

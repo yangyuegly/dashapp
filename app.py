@@ -25,8 +25,26 @@ print(news_dates[0])
 for i in range(len(news_dates)):
     start[news_dates[i]['AccountName']] = news_dates[i]['Start']
     end[news_dates[i]['AccountName']] = news_dates[i]['End']
+    
+    
+#get real news sources associated with fake accounts
+with open('real_news.json','r') as json_file:
+        news_urls= (json.load(json_file))
+print(news_urls[0])
 
-print(start, end)
+urls = {}
+for account in fake_news_accounts:
+    curr_url = []
+    for i in range(len(news_urls)):
+        if news_urls[i]["fake account name"] == account:
+            curr_url.append((news_urls[i]["URL of real websites"],news_urls[i]["Frequency"]))
+            #print(curr_url)
+    urls[account] = curr_url
+#print(urls['TodayPittsburgh'])
+
+
+
+
 @app.route('/home')
 def homepage():
     title = "IRA Twitter Research"
@@ -35,7 +53,7 @@ def homepage():
 
 @app.route('/<some_fake_account>')
 def account_page(some_fake_account):
-    return render_template("account.html", title = some_fake_account, start_date = start[some_fake_account], end_date = end[some_fake_account])
+    return render_template("account.html", title = some_fake_account, start_date = start[some_fake_account], end_date = end[some_fake_account],urls=urls[some_fake_account])
 
 #corresponding account information 
 
@@ -46,6 +64,22 @@ app = dash.Dash(
     server=app,
     routes_pathname_prefix='/dash/'
 )
+
+
+individual_page_layout = html.Div([
+    html.H1('Page 1'),
+    dcc.Dropdown(
+        id='page-1-dropdown',
+        options=[{'label': i, 'value': i} for i in ['LA', 'NYC', 'MTL']],
+        value='LA'
+    ),
+    html.Div(id='page-1-content'),
+    html.Br(),
+    dcc.Link('Go to Page 2', href='/page-2'),
+    html.Br(),
+    dcc.Link('Go back to home', href='/'),
+
+])
 
 
 
