@@ -99,83 +99,85 @@ fake_news_accounts = [
 'Baltimore0nline',
 'OaklandOnline',
 'StLouisOnline']
+
 print(len(fake_news_accounts))
 app.layout = dfx.Grid(id='grid', fluid=True, children=[
         dfx.Row(children=[
             dfx.Col(xs=12, lg=3, children=[
                 html.Div(dcc.Graph(id='bar_plot2',              
               figure=go.Figure(data=[traces['NewOrleansON1'], traces['NewOrleansON2']],
-                               layout=go.Layout({"title":'NewOrleansON' , "barmode":'stack'}))
+                               layout=go.Layout({"title":'NewOrleansON' , "barmode":'stack'},yaxis=dict(autorange=False, range=[0, 4000])
+))
     
             )), html.Div(dcc.Graph(id='bar_plot3',              
               figure=go.Figure(data=[traces['TodayNYCity1'], traces['TodayNYCity2']],
-                               layout=go.Layout({"title":'TodayNYCity' , "barmode":'stack'}))
+                               layout=go.Layout({"title":'TodayNYCity' , "barmode":'stack'},yaxis=dict(autorange=False, range=[0, 4000])))
     
             )), 
             
             html.Div(dcc.Graph(id='bar_plot6',              
               figure=go.Figure(data=[traces['Baltimore0nline1'], traces['Baltimore0nline2']],
-                               layout=go.Layout({"title":'Baltimore0nline' , "barmode":'stack'}))
+                               layout=go.Layout({"title":'Baltimore0nline' , "barmode":'stack'},yaxis=dict(autorange=False, range=[0, 4000])))
     
             )),
                 
             ]),
             dfx.Col(xs=12, lg=3, children=[html.Div(dcc.Graph(id='bar_plot14',              
               figure=go.Figure(data=[traces['HoustonTopNews1'], traces['HoustonTopNews2']],
-                               layout=go.Layout({"title":'HoustonTopNews' , "barmode":'stack'}))
+                               layout=go.Layout({"title":'HoustonTopNews' , "barmode":'stack'},yaxis=dict(autorange=False, range=[0, 4000])))
     
             )),html.Div(dcc.Graph(id='bar_plot17',              
               figure=go.Figure(data=[traces['DailySanJose1'], traces['DailySanJose2']],
-                               layout=go.Layout({"title":'DailySanJose' , "barmode":'stack'}))
+                               layout=go.Layout({"title":'DailySanJose' , "barmode":'stack'},yaxis=dict(autorange=False, range=[0, 4000])))
     
             )),html.Div(dcc.Graph(id='bar_plot18',              
               figure=go.Figure(data=[traces['ChicagoDailyNew1'], traces['ChicagoDailyNew2']],
-                               layout=go.Layout({"title":'ChicagoDailyNew' , "barmode":'stack'}))
+                               layout=go.Layout({"title":'ChicagoDailyNew' , "barmode":'stack'},yaxis=dict(autorange=False, range=[0, 4000])))
     
             ))]), dfx.Col(xs=12, lg=3, children=[html.Div(dcc.Graph(id='bar_plot19',              
               figure=go.Figure(data=[traces['DailySanDiego1'], traces['DailySanDiego2']],
-                               layout=go.Layout({"title":'DailySanDiego' , "barmode":'stack'}))
+                               layout=go.Layout({"title":'DailySanDiego' , "barmode":'stack'},yaxis=dict(autorange=False, range=[0, 4000])))
     
             )),html.Div(dcc.Graph(id='bar_plot20',              
               figure=go.Figure(data=[traces['DetroitDailyNew1'], traces['DetroitDailyNew2']],
-                               layout=go.Layout({"title":'DetroitDailyNew' , "barmode":'stack'}))
+                               layout=go.Layout({"title":'DetroitDailyNew' , "barmode":'stack'},yaxis=dict(autorange=False, range=[0, 4000])))
     
             )),html.Div(dcc.Graph(id='bar_plot21',              
               figure=go.Figure(data=[traces['TodayCincinnati1'], traces['TodayCincinnati2']],
-                               layout=go.Layout({"title":'TodayCincinnati' , "barmode":'stack'}))
+                               layout=go.Layout({"title":'TodayCincinnati' , "barmode":'stack'},yaxis=dict(autorange=False, range=[0, 4000])))
     
             ))]), dfx.Col(xs=12, lg=3, children=[html.Div(dcc.Graph(id='bar_plot5',              
               figure=go.Figure(data=[traces['MinneapolisON1'], traces['MinneapolisON2']],
-                               layout=go.Layout({"title":'MinneapolisON' , "barmode":'stack'}))
+                               layout=go.Layout({"title":'MinneapolisON' , "barmode":'stack'},yaxis=dict(autorange=False, range=[0, 4000])))
     
             )),html.Div(dcc.Graph(id='bar_plot22',              
               figure=go.Figure(data=[traces['KansasDailyNews1'], traces['KansasDailyNews2']],
-                               layout=go.Layout({"title":'KansasDailyNews' , "barmode":'stack'}))
+                               layout=go.Layout({"title":'KansasDailyNews' , "barmode":'stack'},yaxis=dict(autorange=False, range=[0, 4000])))
     
             )),html.Div(dcc.Graph(id='bar_plot23',              
               figure=go.Figure(data=[traces['TodayBostonMA1'], traces['TodayBostonMA2']],
-                               layout=go.Layout({"title":'TodayBostonMA' , "barmode":'stack'}))
+                               layout=go.Layout({"title":'TodayBostonMA' , "barmode":'stack'},yaxis=dict(autorange=False, range=[0, 4000])))
     
             ))])
         ]),dfx.Row(children=[
             dfx.Col(xs=12, lg=3, children=html.Div(dcc.Graph(id='bar_plot11',              
               figure=go.Figure(data=[traces['OnlineCleveland1'], traces['OnlineCleveland2']],
-                               layout=go.Layout({"title":'OnlineCleveland' , "barmode":'stack'}))
+                               layout=go.Layout({"title":'OnlineCleveland' , "barmode":'stack'},yaxis=dict(autorange=False, range=[0, 4000])))
     
             ))),
             dfx.Col(xs=12, lg=3, children=html.Div(dcc.Graph(id='bar_plot10',              
               figure=go.Figure(data=[traces['SanAntoTopNews1'], traces['SanAntoTopNews2']],
-                               layout=go.Layout({"title":'SanAntoTopNews' , "barmode":'stack'}))
+                               layout=go.Layout({"title":'SanAntoTopNews' , "barmode":'stack'},yaxis=dict(autorange=False, range=[0, 4000])))
     
             ))),#2nd column
             dfx.Col(xs=12, lg=3, children=html.Div(dcc.Graph(id='bar_plot7',              
               figure=go.Figure(data=[traces['Atlanta_Online1'], traces['Atlanta_Online2']],
-                               layout=go.Layout({"title":'Atlanta_Online' , "barmode":'stack'}))
+                               layout=go.Layout({"title":'Atlanta_Online' , "barmode":'stack'},yaxis=dict(autorange=False, range=[0, 4000])))
     
             ))),
             dfx.Col(xs=12, lg=3, children=[html.Div(dcc.Graph(id='bar_plot16',              
               figure=go.Figure(data=[traces['ElPasoTopNews1'], traces['ElPasoTopNews2']],
-                               layout=go.Layout({"title":'ElPasoTopNews' , "barmode":'stack'}))
+                               layout=go.Layout({"title":'ElPasoTopNews' , "barmode":'stack'},yaxis=dict(autorange=False, range=[0, 4000])))
     
             ))])
             
@@ -183,24 +185,24 @@ app.layout = dfx.Grid(id='grid', fluid=True, children=[
         dfx.Row(id='row1', children=[
             dfx.Col(id='col1', xs=12, lg=3, children=html.Div(dcc.Graph(id='bar_plot4',              
               figure=go.Figure(data=[traces['StLouisOnline1'], traces['StLouisOnline2']],
-                               layout=go.Layout({"title":'StLouisOnline' , "barmode":'stack'}))
+                               layout=go.Layout({"title":'StLouisOnline' , "barmode":'stack'},yaxis=dict(autorange=False, range=[0, 4000])))
     
             ))),
             dfx.Col(xs=12, lg=3, children=html.Div(dcc.Graph(id='bar_plot9',              
               figure=go.Figure(data=[traces['PhoenixDailyNew1'], traces['PhoenixDailyNew2']],
-                               layout=go.Layout({"title":'PhoenixDailyNew' , "barmode":'stack'}))
+                               layout=go.Layout({"title":'PhoenixDailyNew' , "barmode":'stack'},yaxis=dict(autorange=False, range=[0, 4000])))
     
             )),),#2nd column
             dfx.Col(xs=12, lg=3, children=html.Div(dcc.Graph(id='bar_plot8',              
               figure=go.Figure(data=[traces['TodayMiami1'], traces['TodayMiami2']],
-                               layout=go.Layout({"title":'TodayMiami' , "barmode":'stack'}))
+                               layout=go.Layout({"title":'TodayMiami' , "barmode":'stack'},yaxis=dict(autorange=False, range=[0, 4000])))
     
             ))),
             dfx.Col(xs=12, lg=3, children=html.Div(dcc.Graph(id='bar_plot24',              
 
               figure=go.Figure(data=[traces['TodayPittsburgh1'], traces['TodayPittsburgh2']],
 
-                               layout=go.Layout({"title":'TodayPittsburgh' , "barmode":'stack'}))
+                               layout=go.Layout({"title":'TodayPittsburgh' , "barmode":'stack'},yaxis=dict(autorange=False, range=[0, 4000])))
 
     
 
@@ -210,23 +212,23 @@ app.layout = dfx.Grid(id='grid', fluid=True, children=[
         dfx.Row(id='row2', children=[
             dfx.Col(id='col2', xs=12, lg=3, children=html.Div(dcc.Graph(id='bar_plot1',              
               figure=go.Figure(data=[traces['DailySanFran1'], traces['DailySanFran2']],
-                               layout=go.Layout({"title":'DailySanFran' , "barmode":'stack'}))
+                               layout=go.Layout({"title":'DailySanFran' , "barmode":'stack'},yaxis=dict(autorange=False, range=[0, 4000])))
     
     ))),
             dfx.Col(xs=12, lg=3, children=html.Div(dcc.Graph(id='bar_plot12',              
               figure=go.Figure(data=[traces['WashingtOnline1'], traces['WashingtOnline2']],
-                               layout=go.Layout({"title":'WashingtOnline' , "barmode":'stack'}))
+                               layout=go.Layout({"title":'WashingtOnline' , "barmode":'stack'},yaxis=dict(autorange=False, range=[0, 4000])))
     
             ))),#2nd column
             dfx.Col(xs=12, lg=3, children=html.Div(dcc.Graph(id='bar_plot13',              
               figure=go.Figure(data=[traces['DallasTopNews1'], traces['DallasTopNews2']],
-                               layout=go.Layout({"title":'DallasTopNews' , "barmode":'stack'}))
+                               layout=go.Layout({"title":'DallasTopNews' , "barmode":'stack'},yaxis=dict(autorange=False, range=[0, 4000])))
     
             ))),dfx.Col(xs=12, lg=3, children=html.Div(dcc.Graph(id='bar_plot25',              
 
               figure=go.Figure(data=[traces['Seattle_Post1'], traces['Seattle_Post2']],
 
-                               layout=go.Layout({"title":'Seattle_Post' , "barmode":'stack'}))
+                               layout=go.Layout({"title":'Seattle_Post' , "barmode":'stack'},yaxis=dict(autorange=False, range=[0, 4000])))
 
     
 
@@ -235,19 +237,19 @@ app.layout = dfx.Grid(id='grid', fluid=True, children=[
         ]),dfx.Row(id='row5', children=[
             dfx.Col(id='lol', xs=12, lg=3, children=html.Div(dcc.Graph(id='bar_plot26',              
               figure=go.Figure(data=[traces['PhiladelphiaON1'], traces['PhiladelphiaON2']],
-                               layout=go.Layout({"title":'PhiladelphiaON' , "barmode":'stack'}))
+                               layout=go.Layout({"title":'PhiladelphiaON' , "barmode":'stack'},yaxis=dict(autorange=False, range=[0, 4000])))
     
     ))),
             dfx.Col(xs=12, lg=3, children=html.Div(dcc.Graph(id='bar_plot27',              
               figure=go.Figure(data=[traces['PhiladelphiaON1'], traces['PhiladelphiaON2']],
-                               layout=go.Layout({"title":'PhiladelphiaON' , "barmode":'stack'}))
+                               layout=go.Layout({"title":'PhiladelphiaON' , "barmode":'stack'},yaxis=dict(autorange=False, range=[0, 4000])))
     
             ))),#2nd column
            dfx.Col(xs=12, lg=3, children=html.Div(dcc.Graph(id='bar_plot0',              
 
               figure=go.Figure(data=[traces['DailyLosAngeles1'], traces['DailyLosAngeles2']],
 
-                               layout=go.Layout({"title":'DailyLosAngeles' , "barmode":'stack'}))
+                               layout=go.Layout({"title":'DailyLosAngeles' , "barmode":'stack'},yaxis=dict(autorange=False, range=[0, 4000])))
 
     
 
